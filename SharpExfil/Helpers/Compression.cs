@@ -63,6 +63,7 @@ namespace SharpExfil.Helpers
                                 zipStream.PutNextEntry(newEntry);
                                 fileStream.CopyTo(zipStream);
                                 zipStream.CloseEntry();
+                                entryCount++;
                             }
 
 
