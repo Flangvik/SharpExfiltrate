@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharpExfil.Models
+namespace SharpExfiltrate.Models
 {
     public class BearerTokenErrorResp
     {

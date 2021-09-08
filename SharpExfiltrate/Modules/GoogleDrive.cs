@@ -6,7 +6,7 @@ using Google.Apis.Services;
 using Google.Apis.Upload;
 using Google.Apis.Util.Store;
 using Newtonsoft.Json;
-using SharpExfil.Models;
+using SharpExfiltrate.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,7 +16,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using static Google.Apis.Drive.v3.DriveService;
 
-namespace SharpExfil.Modules
+namespace SharpExfiltrate.Modules
 {
     //https://medium.com/geekculture/upload-files-to-google-drive-with-c-c32d5c8a7abc
 

@@ -1,25 +1,14 @@
 ﻿using CommandLine;
-using CommandLine.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharpExfil.Models
+namespace SharpExfiltrate.Models
 {
-
-    [Verb("GoogleDrive", HelpText = "Exfiltrate information using the GoogleDrive module")]
-    public class GoogleDriveOptions
+    public abstract class FileOptions
     {
-
-
-        [Option('a', "appname", Required = true, HelpText = "Connection string to your Azure Storage Account")]
-        public string Appname { get; set; }
-
-        [Option('c', "accesstoken", Required = true, HelpText = "Connection string to your Azure Storage Account")]
-        public string AccessToken { get; set; }
-
         [Option('f', "filepath", Required = true, HelpText = "Path to file or directory to be exfiltrated")]
         public string FilePath { get; set; }
 
@@ -31,7 +20,6 @@ namespace SharpExfil.Models
 
         [Option('m', "memoryonly", Required = false, HelpText = "Will create the compressed zip file entirely out from memory.(Might cause OutOfMemoryException)")]
         public bool MemOnly { get; set; }
+
     }
-
-
 }

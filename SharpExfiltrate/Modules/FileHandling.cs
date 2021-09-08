@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharpExfil.Modules
+namespace SharpExfiltrate.Modules
 {
     public class FileHandling
     {

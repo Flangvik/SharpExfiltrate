@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharpExfil.Helpers
+namespace SharpExfiltrate.Helpers
 {
     public static class Compression
     {

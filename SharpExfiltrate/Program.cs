@@ -1,10 +1,10 @@
 ﻿using CommandLine;
-using SharpExfil.Models;
-using SharpExfil.Modules;
+using SharpExfiltrate.Models;
+using SharpExfiltrate.Modules;
 using System;
 using System.Threading.Tasks;
 
-namespace SharpExfil
+namespace SharpExfiltrate
 {
     public class Program
     {
@@ -83,8 +83,7 @@ namespace SharpExfil
             CommandLine.Parser.Default.ParseArguments<OneDriveOptions, GoogleDriveOptions, AzureStorageOptions>(args)
               .MapResult(
                 (OneDriveOptions opts) => OneDriveExfil(opts).GetAwaiter().GetResult(),
-               // (AzureStorageOptions opts) => AzureStorageExfil(opts).GetAwaiter().GetResult(),
-               // (DropBoxOptions opts) => DropBoxExfil(opts).GetAwaiter().GetResult(),
+              //  (DropBoxOptions opts) => DropBoxExfil(opts).GetAwaiter().GetResult(),
                 (GoogleDriveOptions opts) => GoogleDriveExfil(opts).GetAwaiter().GetResult(),
                 (AzureStorageOptions opts) => AzureStorageExfil(opts).GetAwaiter().GetResult(),
                 errs => 1);

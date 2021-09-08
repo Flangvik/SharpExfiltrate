@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using SharpExfil.Models;
+using SharpExfiltrate.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Security.Authentication;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharpExfil.Helpers
+namespace SharpExfiltrate.Helpers
 {
     public static class O365Helper
     {

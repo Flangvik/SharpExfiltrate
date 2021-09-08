@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3BB553CD-0A48-402D-9812-8DAFF60AC628}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SharpExfil</RootNamespace>
-    <AssemblyName>SharpExfil</AssemblyName>
+    <RootNamespace>SharpExfiltrate</RootNamespace>
+    <AssemblyName>SharpExfiltrate</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -37,6 +37,9 @@
   <ItemGroup>
     <Reference Include="CommandLine, Version=2.8.0.0, Culture=neutral, PublicKeyToken=5a870481e358d379, processorArchitecture=MSIL">
       <HintPath>..\packages\CommandLineParser.2.8.0\lib\net461\CommandLine.dll</HintPath>
+    </Reference>
+    <Reference Include="Dropbox.Api, Version=6.13.0.0, Culture=neutral, PublicKeyToken=310f0e82fbb45d01, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dropbox.Api.6.13.0\lib\netstandard2.0\Dropbox.Api.dll</HintPath>
     </Reference>
     <Reference Include="Google.Apis, Version=1.54.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Apis.1.54.0\lib\net45\Google.Apis.dll</HintPath>
@@ -90,12 +93,13 @@
   <ItemGroup>
     <Compile Include="Helpers\Compression.cs" />
     <Compile Include="Helpers\O365Helper.cs" />
-    <Compile Include="Models\AzureStorageOptions.cs" />
-    <Compile Include="Models\BearerTokenErrorResp.cs" />
-    <Compile Include="Models\BearerTokenResp.cs" />
-    <Compile Include="Models\DropBoxOptions.cs" />
-    <Compile Include="Models\GoogleDriveOptions.cs" />
-    <Compile Include="Models\OneDriveOptions.cs" />
+    <Compile Include="Models\Options\AzureStorageOptions.cs" />
+    <Compile Include="Models\Office365\BearerTokenErrorResp.cs" />
+    <Compile Include="Models\Office365\BearerTokenResp.cs" />
+    <Compile Include="Models\Options\DropBoxOptions.cs" />
+    <Compile Include="Models\Options\FileOptions.cs" />
+    <Compile Include="Models\Options\GoogleDriveOptions.cs" />
+    <Compile Include="Models\Options\OneDriveOptions.cs" />
     <Compile Include="Modules\AzureStorage.cs" />
     <Compile Include="Modules\DropBox.cs" />
     <Compile Include="Modules\FileHandling.cs" />

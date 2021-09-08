@@ -1,15 +1,15 @@
 ﻿using KoenZomers.OneDrive.Api;
 using KoenZomers.OneDrive.Api.Entities;
-using SharpExfil.Models;
+using SharpExfiltrate.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static SharpExfil.Program;
+using static SharpExfiltrate.Program;
 
-namespace SharpExfil.Modules
+namespace SharpExfiltrate.Modules
 {
     public class OneDrive
     {
