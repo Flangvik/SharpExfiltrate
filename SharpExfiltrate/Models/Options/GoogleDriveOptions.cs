@@ -13,10 +13,10 @@ namespace SharpExfiltrate.Models
     public class GoogleDriveOptions : FileOptions
     { 
 
-        [Option('a', "appname", Required = true, HelpText = "Connection string to your Azure Storage Account")]
-        public string Appname { get; set; }
+        [Option('n', "appname", Required = true, HelpText = "GoogleDrive Application name (Can be anything)")]
+        public string AppName { get; set; }
 
-        [Option('c', "accesstoken", Required = true, HelpText = "Connection string to your Azure Storage Account")]
+        [Option('t', "accesstoken", Required = true, HelpText = "Valid access token onbehalf of your GoogleDrive account")]
         public string AccessToken { get; set; }
     }
 

