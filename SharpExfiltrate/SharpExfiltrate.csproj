@@ -98,7 +98,6 @@
     <Compile Include="Models\Options\GoogleDriveOptions.cs" />
     <Compile Include="Models\Options\OneDriveOptions.cs" />
     <Compile Include="Modules\AzureStorage.cs" />
-    <Compile Include="Modules\DropBox.cs" />
     <Compile Include="Modules\FileHandling.cs" />
     <Compile Include="Modules\GoogleDrive.cs" />
     <Compile Include="Modules\OneDrive.cs" />
